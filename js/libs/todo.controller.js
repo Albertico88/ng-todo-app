@@ -1,16 +1,19 @@
 function TodoController() {
   this.list = [{
-    title: "First item",
+    title: 'First Item',
+    completed: true
+  },{
+    title: 'Second Item',
     completed: false
   },{
-    title: "Middle item",
-    completed: false
+    title: 'Third Item',
+    completed: true
   },{
-    title: "Last item",
+    title: 'Last Item',
     completed: false
   }];
 }
 
-  angular
+angular
   .module('app')
   .controller('TodoController', TodoController);
