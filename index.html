@@ -6,6 +6,8 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/libs/angular.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <script src="https://use.fontawesome.com/d8ef83d7a7.js"></script>
   </head>
 
@@ -16,7 +18,7 @@
         <input type="text"
         placeholder="Add a new item"
         ng-model="todo.newTodo">
-
+      </form>
       <ul class="todo__list">
         <li ng-repeat="item in todo.list">
           <input type="checkbox" id="todo-{{ $index }}"
