@@ -6,6 +6,7 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/libs/angular.js"></script>
+    <script src="https://use.fontawesome.com/d8ef83d7a7.js"></script>
   </head>
 
   <body>
@@ -15,7 +16,6 @@
         <input type="text"
         placeholder="Add a new item"
         ng-model="todo.newTodo">
-      </form>
 
       <ul class="todo__list">
         <li ng-repeat="item in todo.list">
@@ -35,6 +35,10 @@
             </a>
         </li>
       </ul>
+    </div>
+
+    <div class="footer">
+      Made with <span class="fa fa-heart" aria-hiden="true" style="color:red"></span> in NYC
     </div>
 
 
