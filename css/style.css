@@ -215,13 +215,10 @@ input[type=checkbox]:checked + .toggle:after {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  position: relative;
   padding: 1rem;
   text-align: center;
   font-family: 'Permanent Marker', cursive;
-  font-size: 20px;
+  font-size: 15px;
   color: #363131;
 }
