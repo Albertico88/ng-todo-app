@@ -33,6 +33,13 @@ function TodoController() {
     this.list.splice(index, 1);
   };
 
+// Gets Items not completed
+  this.getRemaining = function() {
+    return this.list.filter(function(item) {
+      return !item.completed;
+    });
+  };
+
   window.onload = function() {
     console.log('Done loading');
   };

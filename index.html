@@ -40,6 +40,16 @@
           </a>
         </li>
       </ul>
+
+      <!-- todo item summary -->
+      <p class="todo__remaining">
+        <span ng-if="todo.getRemaining().length > 0">
+          You have {{ todo.getRemaining().length }} of {{ todo.list.length }} items remaining
+        </span>
+        <span ng-if="todo.getRemaining().length === 0">
+          Yay!  All done here
+        </span>
+      </p>
     </div>
 
     <div class="footer">
