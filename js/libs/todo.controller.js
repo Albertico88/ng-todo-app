@@ -12,6 +12,13 @@ function TodoController(TodoService) {
         ctrl.list = response;
       });
   }
+
+// Updates item, sends PUT request
+  ctrl.updateTodo = function(item, index) {
+    TodoService
+      .update(item);
+  }
+
 //  < -- End API -- >
 
 

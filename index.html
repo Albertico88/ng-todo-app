@@ -30,9 +30,10 @@
             {{ item.title }}
           </p>
           <div ng-show="showEditField">
-            <input type="text"
-            ng-model="item.title"
-            ng-blur="showEditField = false;">
+            <input
+              type="text"
+              ng-model="item.title"
+              ng-blur="todo.updateTodo(item, $index); showEditField = false;">
           </div>
             <!-- remove item from list -->
           <a href="" ng-click="todo.removeTodo(item, $index);">
@@ -53,7 +54,7 @@
     </div>
 
     <div class="footer">
-      Made with <span class="fa fa-heart" aria-hiden="true" style="color:red"></span> in NYC
+      Made with <span class="fa fa-heart" aria-hiden="true"></span> in NYC
     </div>
 
 

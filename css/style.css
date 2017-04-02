@@ -222,3 +222,7 @@ input[type=checkbox]:checked + .toggle:after {
   font-size: 15px;
   color: #363131;
 }
+
+.footer span {
+  color: #ef6e6e;
+}
