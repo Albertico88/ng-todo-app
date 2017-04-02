@@ -1,49 +1,43 @@
-function TodoController() {
-  this.newTodo = '';
+function TodoController(TodoService) {
+  var ctrl = this;
+  ctrl.newTodo = '';
+  ctrl.list = [];
 
-  this.list = [{
-    title: 'First Item',
-    completed: true
-  },{
-    title: 'Second Item',
-    completed: false
-  },{
-    title: 'Third Item',
-    completed: true
-  },{
-    title: 'Fourth Item',
-    completed: true
-  },{
-    title: 'Last Items',
-    completed: true
-  }];
+//  < -- API -- >
+// Retrieves API's todo list
+  function getTodos() {
+    TodoService
+      .retrieve()
+      .then(function (response) {
+        ctrl.list = response;
+      });
+  }
+//  < -- End API -- >
+
 
 // Add new Item to list
-  this.addTodo = function() {
-    this.list.unshift({
-      title: this.newTodo,
+  ctrl.addTodo = function() {
+    ctrl.list.unshift({
+      title: ctrl.newTodo,
       completed: false
     });
     // clear box after adding item
-    this.newTodo = '';
+    ctrl.newTodo = '';
   };
 
 // Delete Item from list
-  this.removeTodo = function(item, index){
-    this.list.splice(index, 1);
+  ctrl.removeTodo = function(item, index){
+    ctrl.list.splice(index, 1);
   };
 
 // Gets Items not completed
-  this.getRemaining = function() {
-    return this.list.filter(function(item) {
+  ctrl.getRemaining = function() {
+    return ctrl.list.filter(function(item) {
       return !item.completed;
     });
   };
 
-  window.onload = function() {
-    console.log('Done loading');
-  };
-
+  getTodos();
 }
 
 angular
