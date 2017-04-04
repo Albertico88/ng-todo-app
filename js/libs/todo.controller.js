@@ -3,7 +3,6 @@ function TodoController(TodoService) {
   ctrl.newTodo = '';
   ctrl.list = [];
 
-//  < -- API -- >
 // Retrieves API's todo list
   function getTodos() {
     TodoService
@@ -13,28 +12,41 @@ function TodoController(TodoService) {
       });
   }
 
+
 // Updates item, sends PUT request
   ctrl.updateTodo = function(item, index) {
+    if (!item.title) {
+      ctrl.removeTodo(item, index);
+      return;
+    }
     TodoService
       .update(item);
   }
 
-//  < -- End API -- >
-
-
 // Add new Item to list
   ctrl.addTodo = function() {
-    ctrl.list.unshift({
-      title: ctrl.newTodo,
-      completed: false
-    });
-    // clear box after adding item
-    ctrl.newTodo = '';
+    // empty strings cant be added
+    if (!ctrl.newTodo) {
+      return;
+    }
+    TodoService
+      .create({
+        title: ctrl.newTodo,
+        completed: false
+      })
+      .then(function (response) {
+        ctrl.list.unshift(response);
+        ctrl.newTodo = '';
+      });
   };
 
 // Delete Item from list
   ctrl.removeTodo = function(item, index){
-    ctrl.list.splice(index, 1);
+    TodoService
+      .remove(item)
+      .then(function (response) {
+        ctrl.list.splice(index, 1);
+      });
   };
 
 // Gets Items not completed
@@ -42,6 +54,16 @@ function TodoController(TodoService) {
     return ctrl.list.filter(function(item) {
       return !item.completed;
     });
+  };
+
+  ctrl.toggleState = function(item) {
+    TodoService
+      .update(item)
+      .then(function () {
+
+      }, function () {
+        item.completed = !item.completed;
+      });
   };
 
   getTodos();
